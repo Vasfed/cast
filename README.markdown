@@ -1,10 +1,10 @@
-# CAST
+# CASTY
 
-C parser and abstract syntax tree for Ruby.
+Casty is a fork of CAST, a C parser and abstract syntax tree for Ruby.
 
 ## Example
 
-    require 'cast'
+    require 'casty'
 
     source = File.read('file.c')
     ast = C.parse(source)
@@ -1937,8 +1937,8 @@ this. You'll need to manually massage such constructs out of the
 
 ## Contributing
 
- * [Bug reports](http://github.com/oggy/cast/issues)
- * [Source](http://github.com/oggy/cast)
+ * [Bug reports](http://github.com/Vasfed/cast/issues)
+ * [Source](http://github.com/Vasfed/cast)
  * Patches: Fork on Github, send pull request.
    * Include tests where practical.
    * Leave the version alone, or bump it in a separate commit.

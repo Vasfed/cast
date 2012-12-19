@@ -1,5 +1,13 @@
-require 'ritual'
+# require 'ritual'
 require 'rake/testtask'
+require "bundler/gem_tasks"
+
+
+require 'rake/extensiontask'
+
+t = Rake::ExtensionTask.new('casty')
+
+t.instance_variable_set :@task_dependencies, [:ext]
 
 Rake::TestTask.new do |t|
   t.libs << "test"
@@ -7,16 +15,16 @@ Rake::TestTask.new do |t|
   t.verbose = true
 end
 
-extension
+# extension
 
-file 'ext/cast.so' => FileList['ext/*.c', 'ext/yylex.c'] do |t|
-  FileUtils.cd 'ext' do
-    ruby 'extconf.rb'
-    sh 'make'
-  end
-end
+# file 'ext/cast.so' => FileList['ext/*.c', 'ext/yylex.c'] do |t|
+#   FileUtils.cd 'ext' do
+#     ruby 'extconf.rb'
+#     sh 'make'
+#   end
+# end
 
-file 'ext/yylex.c' => 'ext/yylex.re' do |t|
+file 'ext/casty/yylex.c' => 'ext/casty/yylex.re' do |t|
   sh "re2c #{t.prerequisites[0]} > #{t.name}"
 end
 
@@ -24,8 +32,15 @@ file 'lib/cast/c.tab.rb' => 'lib/cast/c.y' do |t|
   sh "racc #{t.prerequisites[0]}"
 end
 
-task :ext => 'ext/yylex.c'
-desc "Prepares gem for execution (generates files and compiles extenstion)"
-task :compile => [:ext, 'lib/cast/c.tab.rb']
-task 'gem:build' => ['ext/yylex.c', 'lib/cast/c.tab.rb']
-CLEAN.include('ext/yylex.c', 'lib/cast/c.tab.rb')
+generated_files = 'ext/casty/yylex.c', 'lib/cast/c.tab.rb'
+
+task :generate_files => generated_files
+
+file 'ext/casty/extconf.rb' => :generate_files
+task :build => :generate_files
+
+task :test => :compile
+
+task :default => :test
+
+CLEAN.include(*generated_files)

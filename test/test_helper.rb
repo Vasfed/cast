@@ -6,7 +6,7 @@ $:.unshift "#{ROOT}/lib"
 require 'test/unit'
 require 'stringio'
 require 'fileutils'
-require 'cast'
+require 'casty'
 
 # a dir to cd into for creating files and such
 TEST_DIR = "#{File.dirname(__FILE__)}/var"

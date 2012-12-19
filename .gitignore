@@ -1,8 +1,8 @@
-/*.gem
 /Gemfile.lock
-/ext/Makefile
-/ext/*.bundle
-/ext/*.o
-/ext/yylex.c
+Makefile
+*.bundle
+*.o
+/ext/casty/yylex.c
 /lib/cast/c.tab.rb
-/lib/cast/cast.bundle
+/tmp
+/pkg

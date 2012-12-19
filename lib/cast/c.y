@@ -890,11 +890,10 @@ restrict return short signed sizeof static struct switch typedef union
   end
 
   def handle_preprocessor_directive line, str
-    if line =~ /^(define|undef|if|else|endif)/
-      puts "FOUND!"
+    if str =~ /^(define|undef|if|else|endif)/
       raise ParseError.new("preprocessor directive found, expect input to be preprocessed.")
     else
-      puts "#{line}: #{str}"
+      #TODO: handle line directives etc?
     end
   end
 

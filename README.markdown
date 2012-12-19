@@ -2,6 +2,8 @@
 
 Casty is a fork of CAST, a C parser and abstract syntax tree for Ruby.
 
+It does not choke on #-sequences (source map etc.) left in by preprocessor. `#line`-support may be coming, also `C::Preprocessor` has more options.
+
 ## Example
 
     require 'casty'

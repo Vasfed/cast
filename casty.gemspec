@@ -1,5 +1,5 @@
 $:.unshift File.expand_path('lib', File.dirname(__FILE__))
-require 'cast/version'
+require 'casty/version'
 
 Gem::Specification.new do |gem|
   gem.name = 'casty'
@@ -14,7 +14,7 @@ Gem::Specification.new do |gem|
 
   gem.extensions    = ["ext/casty/extconf.rb"]
   gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
-  gem.files         = `git ls-files`.split("\n") + ['ext/casty/yylex.c', 'lib/cast/c.tab.rb']
+  gem.files         = `git ls-files`.split("\n") + ['ext/casty/yylex.c', 'lib/casty/c.tab.rb']
   gem.test_files    = `git ls-files -- test/*`.split("\n")
 
   gem.add_development_dependency 'rake-compiler'

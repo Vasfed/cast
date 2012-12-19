@@ -28,11 +28,11 @@ file 'ext/casty/yylex.c' => 'ext/casty/yylex.re' do |t|
   sh "re2c #{t.prerequisites[0]} > #{t.name}"
 end
 
-file 'lib/cast/c.tab.rb' => 'lib/cast/c.y' do |t|
+file 'lib/casty/c.tab.rb' => 'lib/casty/c.y' do |t|
   sh "racc #{t.prerequisites[0]}"
 end
 
-generated_files = 'ext/casty/yylex.c', 'lib/cast/c.tab.rb'
+generated_files = 'ext/casty/yylex.c', 'lib/casty/c.tab.rb'
 
 task :generate_files => generated_files
 

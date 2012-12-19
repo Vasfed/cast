@@ -1,11 +1,5 @@
-require "cast/cast"
-require "cast/tempfile"
-require "cast/preprocessor"
-require "cast/node"
-require "cast/node_list"
-require "cast/c_nodes"
-require "cast/c.tab"
-require "cast/parse"
-require "cast/to_s"
-require "cast/inspect"
-require "cast/version"
+require File.expand_path('../casty_ext', __FILE__)
+
+%w{ tempfile preprocessor node node_list c_nodes c.tab parse to_s inspect version}.each{|f|
+  require "casty/#{f}"
+}

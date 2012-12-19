@@ -3,6 +3,6 @@ Makefile
 *.bundle
 *.o
 /ext/casty/yylex.c
-/lib/cast/c.tab.rb
+*.tab.rb
 /tmp
 /pkg

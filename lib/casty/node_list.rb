@@ -256,7 +256,7 @@ module C
       node.parent.equal? self or
         raise ArgumentError, "node is not a child"
       index = node.instance_variable_get(:@parent_index)
-      index.instance_variable_set(:@parent_index, nil)
+      node.instance_variable_set(:@parent_index, nil)
       removed_(@array[index])
       @array.delete_at(index)
       adjust_indices_(index)

@@ -34,6 +34,7 @@ end
 
 generated_files = 'ext/casty/yylex.c', 'lib/casty/c.tab.rb'
 
+desc "generate_files"
 task :generate_files => generated_files
 
 file 'ext/casty/extconf.rb' => :generate_files
